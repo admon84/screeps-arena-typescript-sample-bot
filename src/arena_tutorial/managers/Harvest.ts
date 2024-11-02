@@ -3,7 +3,7 @@ import { Priority } from 'common/enums/priority';
 import { RoleTUT as Role } from 'common/enums/role';
 import { getMaxLevelWorker, getWorkerBody } from 'common/lib/bodyParts';
 import { Core } from '../Core';
-import { getCreepsInQueue, orderCreep } from '../repository/Orders';
+import { getCreepsInQueue, orderCreep } from '../lib/orders';
 import { run as runHarvester } from '../roles/Harvester';
 
 const MAX_HARVESTERS = 2;
@@ -65,5 +65,5 @@ function orderHarvester(core: Core, priority: Priority = Priority.Normal) {
   order.body = getWorkerBody(level);
   order.priority = priority;
 
-  orderCreep(order);
+  orderCreep(order, core);
 }

@@ -3,18 +3,20 @@ import { OrderQueue } from 'common/classes/OrderQueue';
 import { Priority } from 'common/enums/priority';
 import { RoleTUT as Role } from 'common/enums/role';
 import { getCostForBody } from 'common/lib/bodyParts';
-import { getCore } from '../Core';
+import { MAX_CREEP_SIZE } from 'game/constants';
+import { Core } from '../Core';
 
-export function orderCreep(order: Order): boolean {
+export function orderCreep(order: Order, core: Core): boolean {
   if (order.body.length === 0) {
     console.log(`Creep ordered with empty body (${Role[order.role]} T${order.level})`);
     return false;
   }
-  if (order.body.length > 50) {
+
+  if (order.body.length > MAX_CREEP_SIZE) {
     console.log(`Creep ordered with body larger than 50 (${Role[order.role]} T${order.level})`);
     return false;
   }
-  const core = getCore();
+
   const costOfCreep = getCostForBody(order.body);
   if (costOfCreep > core.getSpawnEnergyCapacity()) {
     console.log(`Creep ordered costing ${costOfCreep} is too expensive (${Role[order.role]} T${order.level})`);

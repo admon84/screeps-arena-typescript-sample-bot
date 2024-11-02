@@ -1,28 +1,4 @@
-import { ATTACK, BodyPartConstant, CARRY, HEAL, MOVE, RANGED_ATTACK, TOUGH, WORK } from 'game/constants';
-
-/**
- * Returns the spawn cost for a bodypart
- */
-const getCostForBodypart = (part: BodyPartConstant): number => {
-  switch (part) {
-    case TOUGH:
-      return 10;
-    case MOVE:
-      return 50;
-    case CARRY:
-      return 50;
-    case ATTACK:
-      return 80;
-    case WORK:
-      return 100;
-    case RANGED_ATTACK:
-      return 150;
-    case HEAL:
-      return 250;
-    default:
-      return 0;
-  }
-};
+import { ATTACK, BODYPART_COST, BodyPartConstant, CARRY, HEAL, MOVE, RANGED_ATTACK, TOUGH, WORK } from 'game/constants';
 
 /**
  * Adds parts to a body
@@ -59,7 +35,7 @@ const getMaxLevel = (energy: number, bodyFunction: (i: number) => BodyPartConsta
 export function getCostForBody(body: BodyPartConstant[]): number {
   let cost = 0;
   for (const part of body) {
-    cost += getCostForBodypart(part);
+    cost += BODYPART_COST[part];
   }
   return cost;
 }

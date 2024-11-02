@@ -1,5 +1,6 @@
 import { OrderQueue } from 'common/classes/OrderQueue';
 import { RoleTUT as Role } from 'common/enums/role';
+import { BODYPART_COST, MOVE } from 'game/constants';
 import { Core } from '../Core';
 
 export function runSpawn(core: Core): void {
@@ -11,7 +12,7 @@ export function runSpawn(core: Core): void {
 function spawnShouldRun(core: Core): boolean {
   if (core.mySpawn && core.mySpawn.exists) {
     const spawnEnergy = core.mySpawn.store.energy;
-    if (spawnEnergy && spawnEnergy >= 100) {
+    if (spawnEnergy && spawnEnergy >= BODYPART_COST[MOVE]) {
       return true;
     }
   }
@@ -27,8 +28,7 @@ function processQueue(core: Core): void {
   }
 
   if (size > 1) {
-    const sortedOrders = orders.sort(({ priority: a }, { priority: b }) => (a > b ? 1 : b > a ? -1 : 0));
-    OrderQueue.set(sortedOrders);
+    OrderQueue.sortByPriority();
   }
 
   const first = 0;

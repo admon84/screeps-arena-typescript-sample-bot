@@ -3,7 +3,7 @@ import { Priority } from 'common/enums/priority';
 import { RoleTUT as Role } from 'common/enums/role';
 import { getBlinkyBody, getMaxLevelBlinky } from 'common/lib/bodyParts';
 import { Core } from '../Core';
-import { getCreepsInQueue, orderCreep } from '../repository/Orders';
+import { getCreepsInQueue, orderCreep } from '../lib/orders';
 import { run as runAttacker } from '../roles/Attacker';
 
 const MAX_ATTACKERS = 4;
@@ -37,5 +37,5 @@ function orderAttackers(core: Core): void {
   order.body = getBlinkyBody(maxLevel);
   order.priority = Priority.High;
 
-  orderCreep(order);
+  orderCreep(order, core);
 }
