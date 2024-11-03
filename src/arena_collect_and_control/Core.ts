@@ -27,10 +27,6 @@ export class Core extends CommonCore {
   public droppedResource: Resource[] = [];
   public avoidAreas: AreaEffect[] = [];
 
-  public constructor() {
-    super();
-  }
-
   public run() {
     super.run();
 

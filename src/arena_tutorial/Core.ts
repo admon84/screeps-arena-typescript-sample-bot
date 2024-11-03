@@ -10,10 +10,6 @@ export class Core extends CommonCore {
   public sources: Source[] = [];
   public walls: StructureWall[] = [];
 
-  public constructor() {
-    super();
-  }
-
   public run() {
     super.run();
 

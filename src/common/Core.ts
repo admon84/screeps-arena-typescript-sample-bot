@@ -82,8 +82,4 @@ export class Core {
 
     return true;
   }
-
-  public timeRemainingUnder(time: number): boolean {
-    return arenaInfo.ticksLimit - time < this.time;
-  }
 }

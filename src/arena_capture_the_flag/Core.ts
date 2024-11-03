@@ -11,10 +11,6 @@ export class Core extends CommonCore {
   public enemyTowers: StructureTower[] = [];
   public bodyParts: BodyPart[] = [];
 
-  public constructor() {
-    super();
-  }
-
   public run() {
     super.run();
 

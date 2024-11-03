@@ -23,10 +23,6 @@ export class Core extends CommonCore {
   public enemyConstrSites: ConstructionSite[] = [];
   public containers: StructureContainer[] = [];
 
-  public constructor() {
-    super();
-  }
-
   public run() {
     super.run();
 

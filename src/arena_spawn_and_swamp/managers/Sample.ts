@@ -1,9 +1,10 @@
 import { RoleCTF as Role } from 'common/enums/role';
-import { ATTACK, MOVE } from 'game/constants';
+import { getFighterBody } from 'common/lib/bodyParts';
 import { Creep } from 'game/prototypes';
 import { Core } from '../Core';
 import { run as runSampleRole } from '../roles/Sample';
 
+// Global variables persist between ticks in Screeps Arena.
 let sampleCreep: Creep | undefined;
 
 export function runSample(core: Core) {
@@ -15,7 +16,8 @@ export function runSample(core: Core) {
 
 function spawnCreep(core: Core) {
   if (!sampleCreep) {
-    sampleCreep = core.mySpawn.spawnCreep([MOVE, ATTACK]).object;
+    const body = getFighterBody(1);
+    sampleCreep = core.mySpawn.spawnCreep(body).object;
   }
 }
 
