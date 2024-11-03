@@ -22,7 +22,7 @@ export function run(creep: Creep, core: Core) {
   attack(creep, core.enemySpawn);
 }
 
-function attack(creep: Creep, target: Creep | StructureWall | StructureSpawn): void {
+function attack(creep: Creep, target: Creep | StructureWall | StructureSpawn) {
   if (creepHasPart(creep, RANGED_ATTACK)) {
     if (creep.getRangeTo(target) <= 3) {
       creep.rangedAttack(target);

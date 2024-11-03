@@ -11,7 +11,7 @@ const MAX_LEVEL = 3;
 
 let lastRun = 0;
 
-export function runMilitary(core: Core): void {
+export function runMilitary(core: Core) {
   core.runCreeps(Role.Attacker, runAttacker);
 
   if (!lastRun || lastRun + 10 <= core.tick) {
@@ -32,7 +32,7 @@ function shouldOrderAttacker(core: Core): boolean {
   return active < MAX_ACTIVE && !ordered;
 }
 
-function orderAttacker(core: Core): void {
+function orderAttacker(core: Core) {
   const order = new Order();
   order.role = Role.Attacker;
   order.level = MAX_LEVEL;

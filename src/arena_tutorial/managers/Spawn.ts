@@ -3,7 +3,7 @@ import { RoleTUT as Role } from 'common/enums/role';
 import { BODYPART_COST, WORK } from 'game/constants';
 import { Core } from '../Core';
 
-export function runSpawn(core: Core): void {
+export function runSpawn(core: Core) {
   if (spawnShouldRun(core)) {
     processQueue(core);
   }
@@ -13,7 +13,7 @@ function spawnShouldRun(core: Core): boolean {
   return core.mySpawn.store.energy >= BODYPART_COST[WORK];
 }
 
-function processQueue(core: Core): void {
+function processQueue(core: Core) {
   if (!OrderQueue.hasOrder()) return;
 
   OrderQueue.sortByPriority();

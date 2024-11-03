@@ -7,11 +7,11 @@ export class OrderQueue {
     return this._orders;
   }
 
-  public static add(order: Order): void {
+  public static add(order: Order) {
     this._orders.push(order);
   }
 
-  public static remove(order: Order): void {
+  public static remove(order: Order) {
     this._orders = this._orders.filter(
       o => o.role !== order.role && o.level !== order.level && o.priority !== order.priority
     );
@@ -25,11 +25,11 @@ export class OrderQueue {
     return this._orders.length > 0;
   }
 
-  public static sortByPriority(): void {
+  public static sortByPriority() {
     this._orders.sort((a, b) => a.priority - b.priority);
   }
 
-  public static reset(): void {
+  public static reset() {
     this._orders = [];
   }
 }

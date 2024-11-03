@@ -25,7 +25,7 @@ export function run(creep: Creep, core: Core) {
   }
 }
 
-export function runHarvestEnergy(creep: Creep, core: Core): void {
+export function runHarvestEnergy(creep: Creep, core: Core) {
   if (!creepHadState(creep, State.TransferEnergy) && creep.store.getFreeCapacity(RESOURCE_ENERGY) === 0) {
     setCreepStateAndRun(core, creep, State.TransferEnergy, runTransferEnergy);
     return;
@@ -40,7 +40,7 @@ export function runHarvestEnergy(creep: Creep, core: Core): void {
   }
 }
 
-export function runTransferEnergy(creep: Creep, core: Core): void {
+export function runTransferEnergy(creep: Creep, core: Core) {
   if (!creepHadState(creep, State.HarvestEnergy) && !creep.store.energy) {
     setCreepStateAndRun(core, creep, State.HarvestEnergy, runHarvestEnergy);
     return;

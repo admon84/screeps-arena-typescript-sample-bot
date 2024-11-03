@@ -1,6 +1,8 @@
 # Screeps Arena TypeScript Sample Bot
 
-This repo has a TypeScript bot for Screeps Arena. It's a working example to help you create and manage your own bots, and it can beat the final stage of the Tutorial Arena.
+This repository contains a TypeScript bot base for Screeps Arena. It's a starter kit designed to help you quickly jump into the action and build advanced bots.
+
+This bot can beat the final stage of the Tutorial Arena and idle players in each basic arena, providing a solid foundation for your own bot development.
 
 ## Bot Architecture
 
@@ -37,12 +39,13 @@ This repo has a TypeScript bot for Screeps Arena. It's a working example to help
 The main loop is the entry point of the bot's execution. It initializes the core, updates the game state, and runs the managers in sequence.
 
 ```typescript
+// src/arena_tutorial/main.ts
 import { getCore } from './Core';
 import { runHarvest } from './managers/Harvest';
 import { runMilitary } from './managers/Military';
 import { runSpawn } from './managers/Spawn';
 
-export function loop(): void {
+export function loop() {
   const core = getCore();
   core.run();
 
@@ -78,7 +81,7 @@ The bot includes implementations for different arenas, each with its own Core cl
 
 To get started with this sample bot, follow these steps:
 
-1. Clone the repository
+1. Clone the repository.
 
 2. Install dependencies:
 
@@ -92,7 +95,7 @@ To get started with this sample bot, follow these steps:
    npm run build
    ```
 
-4. Change the Screeps Arena client to point to the desired `dist/arena_*` folder
+4. Change the Screeps Arena client to point to the desired `dist/arena_*` folder.
 
 ## Next Steps
 
