@@ -4,6 +4,11 @@ import { Creep } from 'game/prototypes';
 import { getObjectsByPrototype, getTicks } from 'game/utils';
 import { setCreepState } from './lib/creep';
 
+/**
+ * Common Core class.
+ *
+ * Provides access to common game objects and game state.
+ */
 export class Core {
   public tick: number = 0;
   public myCreeps: Creep[] = [];
@@ -45,10 +50,10 @@ export class Core {
     return role !== undefined ? this.getAllOfRole(role) : this.myCreeps;
   }
 
-  public runCreeps<T extends Core>(role: number, func: (creep: Creep, core: T) => void) {
+  public runCreeps<TCore extends Core>(role: number, runRole: (creep: Creep, core: TCore) => void) {
     for (const creep of this.getAllOfRole(role)) {
       if (this.creepShouldRun(creep)) {
-        func(creep, this as unknown as T);
+        runRole(creep, this as unknown as TCore);
       }
     }
   }

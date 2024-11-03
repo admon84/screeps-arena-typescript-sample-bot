@@ -17,11 +17,11 @@ export function creepHadState(creep: Creep, state: number) {
   return creep._states.includes(state);
 }
 
-export function setCreepStateAndRun<T extends Core>(
-  core: T,
+export function setCreepStateAndRun<TCore extends Core>(
+  core: TCore,
   creep: Creep,
   state: number,
-  runFunction: (creep: Creep, core: T, ...args: any[]) => void,
+  runFunction: (creep: Creep, core: TCore, ...args: any[]) => void,
   ...args: any[]
 ) {
   const canRunFunction = !creepHadState(creep, state);

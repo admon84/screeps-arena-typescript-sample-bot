@@ -3,6 +3,13 @@ import { Core as CommonCore } from 'common/Core';
 import { StructureTower } from 'game/prototypes';
 import { getObjectsByPrototype } from 'game/utils';
 
+/**
+ * Capture the Flag Core class.
+ *
+ * Provides access to the Capture the Flag game objects and game state.
+ *
+ * @extends CommonCore
+ */
 export class Core extends CommonCore {
   private static instance: Core;
   public myFlag!: Flag;
@@ -33,6 +40,9 @@ export class Core extends CommonCore {
   }
 }
 
+/**
+ * @returns The Core instance.
+ */
 export function getCore(): Core {
   return Core.getInstance();
 }

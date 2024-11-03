@@ -9,6 +9,13 @@ import {
 } from 'game/prototypes';
 import { getObjectsByPrototype } from 'game/utils';
 
+/**
+ * Spawn and Swamp Core class.
+ *
+ * Provides access to the Spawn and Swamp game objects and game state.
+ *
+ * @extends CommonCore
+ */
 export class Core extends CommonCore {
   private static instance: Core;
   public mySpawn!: StructureSpawn;
@@ -57,6 +64,9 @@ export class Core extends CommonCore {
   }
 }
 
+/**
+ * @returns The Core instance.
+ */
 export function getCore(): Core {
   return Core.getInstance();
 }

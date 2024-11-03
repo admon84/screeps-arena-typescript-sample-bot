@@ -1,6 +1,6 @@
 import { OrderQueue } from 'common/classes/OrderQueue';
 import { RoleTUT as Role } from 'common/enums/role';
-import { BODYPART_COST, MOVE } from 'game/constants';
+import { BODYPART_COST, WORK } from 'game/constants';
 import { Core } from '../Core';
 
 export function runSpawn(core: Core): void {
@@ -10,13 +10,7 @@ export function runSpawn(core: Core): void {
 }
 
 function spawnShouldRun(core: Core): boolean {
-  if (core.mySpawn && core.mySpawn.exists) {
-    const spawnEnergy = core.mySpawn.store.energy;
-    if (spawnEnergy && spawnEnergy >= BODYPART_COST[MOVE]) {
-      return true;
-    }
-  }
-  return false;
+  return core.mySpawn.store.energy >= BODYPART_COST[WORK];
 }
 
 function processQueue(core: Core): void {

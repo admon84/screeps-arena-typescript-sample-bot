@@ -12,6 +12,13 @@ import {
 } from 'game/prototypes';
 import { getObjectsByPrototype } from 'game/utils';
 
+/**
+ * Collect and Control Core class.
+ *
+ * Provides access to the Collect and Control game objects and game state.
+ *
+ * @extends CommonCore
+ */
 export class Core extends CommonCore {
   private static instance: Core;
   public mySpawn!: StructureSpawn;
@@ -71,6 +78,9 @@ export class Core extends CommonCore {
   }
 }
 
+/**
+ * @returns The Core instance.
+ */
 export function getCore(): Core {
   return Core.getInstance();
 }
