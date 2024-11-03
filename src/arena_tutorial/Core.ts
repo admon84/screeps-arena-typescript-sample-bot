@@ -13,7 +13,7 @@ import { getObjectsByPrototype } from 'game/utils';
 export class Core extends CommonCore {
   private static instance: Core;
   public mySpawn!: StructureSpawn;
-  public enemySpawn!: StructureSpawn;
+  public enemySpawn?: StructureSpawn;
   public sources: Source[] = [];
   public walls: StructureWall[] = [];
 

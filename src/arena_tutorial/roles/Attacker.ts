@@ -18,8 +18,10 @@ export function run(creep: Creep, core: Core) {
     return;
   }
 
-  creep.moveTo(core.enemySpawn);
-  attack(creep, core.enemySpawn);
+  if (core.enemySpawn) {
+    creep.moveTo(core.enemySpawn);
+    attack(creep, core.enemySpawn);
+  }
 }
 
 function attack(creep: Creep, target: Creep | StructureWall | StructureSpawn) {
