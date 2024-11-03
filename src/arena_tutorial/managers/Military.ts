@@ -6,36 +6,37 @@ import { Core } from '../Core';
 import { getCreepsInQueue, orderCreep } from '../lib/orders';
 import { run as runAttacker } from '../roles/Attacker';
 
-const MAX_ATTACKERS = 4;
-const MAX_ORDER_ENERGY = 0.6;
+const MAX_ACTIVE = 3;
+const MAX_LEVEL = 3;
+
+let lastRun = 0;
 
 export function runMilitary(core: Core): void {
   core.runCreeps(Role.Attacker, runAttacker);
 
-  if (shouldOrderAttackers(core)) {
-    orderAttackers(core);
-  }
-}
-
-function shouldOrderAttackers(core: Core): boolean {
-  const active = core.getCreeps(Role.Attacker).length;
-  if (active < MAX_ATTACKERS) {
-    if (!getCreepsInQueue(Role.Attacker)) {
-      return true;
+  if (!lastRun || lastRun + 10 <= core.tick) {
+    if (shouldOrderAttacker(core)) {
+      orderAttacker(core);
     }
+    lastRun = core.tick;
   }
-  return false;
 }
 
-function orderAttackers(core: Core): void {
-  const maxEnergy = core.getSpawnEnergyCapacity() * MAX_ORDER_ENERGY;
-  const maxLevel = getMaxLevelBlinky(maxEnergy);
+function shouldOrderAttacker(core: Core): boolean {
+  if (core.getCreeps(Role.Harvester).length === 0) {
+    return false;
+  }
 
+  const active = core.getCreeps(Role.Attacker).length;
+  const ordered = getCreepsInQueue(Role.Attacker);
+  return active < MAX_ACTIVE && !ordered;
+}
+
+function orderAttacker(core: Core): void {
   const order = new Order();
   order.role = Role.Attacker;
-  order.level = maxLevel;
-  order.body = getBlinkyBody(maxLevel);
+  order.level = MAX_LEVEL;
+  order.body = getBlinkyBody(order.level);
   order.priority = Priority.High;
-
   orderCreep(order, core);
 }

@@ -25,9 +25,7 @@ export function orderCreep(order: Order, core: Core): boolean {
 
   OrderQueue.add(order);
   console.log(
-    `Order: ${Role[order.role]} (level ${order.level}) - Priority: ${
-      Priority[order.priority]
-    } - Cost: ${costOfCreep} - Queue: ${OrderQueue.get().length}`
+    `Order: ${Role[order.role]} (level ${order.level}) - Priority: ${Priority[order.priority]} - Cost: ${costOfCreep}`
   );
 
   return true;

@@ -5,15 +5,15 @@ import { getObjectsByPrototype, getTicks } from 'game/utils';
 import { setCreepState } from './lib/creep';
 
 export class Core {
-  public time: number = 0;
+  public tick: number = 0;
   public myCreeps: Creep[] = [];
   public myCreepsByRole: Partial<Record<Role, Creep[]>> = {};
   public enemyCreeps: Creep[] = [];
 
   public run() {
-    this.time = getTicks();
+    this.tick = getTicks();
 
-    if (this.time === 1) {
+    if (this.tick === 1) {
       const { name, level } = arenaInfo;
       console.log(`✨Arena: ${name}${level}`);
     }
