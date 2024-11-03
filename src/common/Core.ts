@@ -15,7 +15,7 @@ export class Core {
 
     if (this.tick === 1) {
       const { name, level } = arenaInfo;
-      console.log(`✨Arena: ${name}${level}`);
+      console.log(`✨Arena: ${name} [${level}]`);
     }
 
     this.myCreeps = [];
@@ -28,9 +28,7 @@ export class Core {
       if (c.my) {
         this.myCreeps.push(c);
         if (c._role) {
-          if (!this.myCreepsByRole[c._role]) {
-            this.myCreepsByRole[c._role] = [];
-          }
+          this.myCreepsByRole[c._role] = this.getAllOfRole(c._role);
           this.myCreepsByRole[c._role]!.push(c);
         }
       } else {
@@ -44,21 +42,7 @@ export class Core {
   }
 
   public getCreeps(role?: Role): Creep[] {
-    const creeps: Creep[] = [];
-
-    if (role) {
-      for (const creep of this.myCreepsByRole[role] ?? []) {
-        creeps.push(creep);
-      }
-      return creeps;
-    }
-
-    for (const creep of this.myCreeps) {
-      if (!role || creep._role === role) {
-        creeps.push(creep);
-      }
-    }
-    return creeps;
+    return role !== undefined ? this.getAllOfRole(role) : this.myCreeps;
   }
 
   public runCreeps<T extends Core>(role: number, func: (creep: Creep, core: T) => void) {

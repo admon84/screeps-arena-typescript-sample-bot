@@ -20,25 +20,17 @@ function spawnShouldRun(core: Core): boolean {
 }
 
 function processQueue(core: Core): void {
-  const orders = OrderQueue.get();
+  if (!OrderQueue.hasOrder()) return;
 
-  const size = orders.length;
-  if (size === 0) {
-    return;
-  }
-
-  if (size > 1) {
-    OrderQueue.sortByPriority();
-  }
-
-  const first = 0;
-  const order = orders[first];
-  const { object: creep } = core.mySpawn.spawnCreep(order.body);
+  OrderQueue.sortByPriority();
+  const order = OrderQueue.getFirst()!;
+  const { body, level, role } = order;
+  const { object: creep } = core.mySpawn.spawnCreep(body);
 
   if (creep) {
-    console.log(`Spawn: ${Role[order.role]} (level ${order.level})`);
-    creep._role = order.role;
-    creep._level = order.level;
-    OrderQueue.remove(first);
+    console.log(`Spawn: ${Role[role]} [${level}]`);
+    creep._role = role;
+    creep._level = level;
+    OrderQueue.remove(order);
   }
 }

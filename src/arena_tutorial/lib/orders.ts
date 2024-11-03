@@ -8,24 +8,24 @@ import { Core } from '../Core';
 
 export function orderCreep(order: Order, core: Core): boolean {
   if (order.body.length === 0) {
-    console.log(`Creep ordered with empty body (${Role[order.role]} T${order.level})`);
+    console.log(`Creep ordered with empty body: ${Role[order.role]} [${order.level}]`);
     return false;
   }
 
   if (order.body.length > MAX_CREEP_SIZE) {
-    console.log(`Creep ordered with body larger than 50 (${Role[order.role]} T${order.level})`);
+    console.log(`Creep ordered with body larger than 50: ${Role[order.role]} [${order.level}]`);
     return false;
   }
 
   const costOfCreep = getCostForBody(order.body);
   if (costOfCreep > core.getSpawnEnergyCapacity()) {
-    console.log(`Creep ordered costing ${costOfCreep} is too expensive (${Role[order.role]} T${order.level})`);
+    console.log(`Creep ordered costing ${costOfCreep} is too expensive: ${Role[order.role]} [${order.level}]`);
     return false;
   }
 
   OrderQueue.add(order);
   console.log(
-    `Order: ${Role[order.role]} (level ${order.level}) - Priority: ${Priority[order.priority]} - Cost: ${costOfCreep}`
+    `Order: ${Role[order.role]} [${order.level}] (Priority: ${Priority[order.priority]}, Cost: ${costOfCreep})`
   );
 
   return true;

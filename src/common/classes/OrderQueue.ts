@@ -11,13 +11,22 @@ export class OrderQueue {
     this._orders.push(order);
   }
 
-  public static remove(index: number): void {
-    this._orders.splice(index, 1);
+  public static remove(order: Order): void {
+    this._orders = this._orders.filter(
+      o => o.role !== order.role && o.level !== order.level && o.priority !== order.priority
+    );
+  }
+
+  public static getFirst(): Order | undefined {
+    return this._orders[0];
+  }
+
+  public static hasOrder(): boolean {
+    return this._orders.length > 0;
   }
 
   public static sortByPriority(): void {
-    const sortedOrders = this._orders.sort(({ priority: a }, { priority: b }) => (a > b ? 1 : b > a ? -1 : 0));
-    this._orders = sortedOrders;
+    this._orders.sort((a, b) => a.priority - b.priority);
   }
 
   public static reset(): void {

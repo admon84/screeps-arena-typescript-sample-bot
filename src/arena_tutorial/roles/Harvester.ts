@@ -1,5 +1,5 @@
 import { creepHadState, setCreepStateAndRun } from 'common/lib/creep';
-import { ERR_NOT_IN_RANGE, RESOURCE_ENERGY } from 'game/constants';
+import { ERR_NOT_IN_RANGE, OK, RESOURCE_ENERGY } from 'game/constants';
 import { Creep } from 'game/prototypes';
 import { Core } from '../Core';
 
@@ -46,16 +46,12 @@ export function runTransferEnergy(creep: Creep, core: Core): void {
     return;
   }
 
-  if (core.mySpawn && core.mySpawn.exists) {
-    const spawnFreeCapacity = core.mySpawn.store.getFreeCapacity(RESOURCE_ENERGY);
-    if (spawnFreeCapacity !== null && spawnFreeCapacity > 0) {
-      if (creep.getRangeTo(core.mySpawn) > 1) {
-        creep.moveTo(core.mySpawn);
-      } else {
-        creep.transfer(core.mySpawn, RESOURCE_ENERGY);
-        setCreepStateAndRun(core, creep, State.HarvestEnergy, runHarvestEnergy);
-      }
-      return;
+  if (core.mySpawn.store.getFreeCapacity(RESOURCE_ENERGY)) {
+    const result = creep.transfer(core.mySpawn, RESOURCE_ENERGY);
+    if (result === OK) {
+      setCreepStateAndRun(core, creep, State.HarvestEnergy, runHarvestEnergy);
+    } else if (result === ERR_NOT_IN_RANGE) {
+      creep.moveTo(core.mySpawn);
     }
   }
 }
