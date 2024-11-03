@@ -8,33 +8,22 @@ This repository contains a TypeScript starter kit and bot base for Screeps Arena
 
 1. **Core Class Singleton**
 
-   - The [Core](src/arena_tutorial/Core.ts) class is a singleton that manages game state and logic. It provides access to common game objects and maintains state for each arena. This pattern is ideal for Screeps Arena because it:
-     - Centralizes access and manipulation of game objects, reducing redundancy.
-     - Supports Arena-Specific game objects by extending the [Common Core](src/common/Core.ts) class.
-     - Maintains State Persistence across ticks.
+   - Manages game state and logic, providing access to common and arena-specific game objects. See [Core](src/arena_tutorial/Core.ts).
 
 2. **Managers**
 
-   - Managers are modular controllers responsible for specific game logic. They are invoked in the main loop to perform their respective tasks.
-   - Example Managers:
-     - **Harvest Manager**: Spawns harvester. See [Harvest](src/arena_tutorial/managers/Harvest.ts).
-     - **Military Manager**: Spawns attacker. See [Military](src/arena_tutorial/managers/Military.ts).
-     - **Spawn Manager**: Manages creep spawning. See [Spawn](src/arena_tutorial/managers/Spawn.ts).
+   - Modular controllers for specific game logic, invoked in the main loop. Examples: [Harvest](src/arena_tutorial/managers/Harvest.ts), [Military](src/arena_tutorial/managers/Military.ts), [Spawn](src/arena_tutorial/managers/Spawn.ts).
 
-3. **Spawn Order Queue**
+3. **Creep Roles**
 
-   - Manage and prioritize the spawning of creeps. See [OrderQueue](src/common/classes/OrderQueue.ts).
+   - Defines specialized behaviors and tasks for creeps. Examples: [Harvester](src/arena_tutorial/roles/Harvester.ts), [Attacker](src/arena_tutorial/roles/Attacker.ts).
 
-4. **Creep Roles**
-
-   - Creeps are assigned roles, each with specialized behaviors and tasks. Roles define the actions a creep can perform.
-   - Example Roles:
-     - **Harvester**: Harvests source and transfers energy. See [Harvester](src/arena_tutorial/roles/Harvester.ts).
-     - **Attacker**: Attacks enemy creeps and structures. See [Attacker](src/arena_tutorial/roles/Attacker.ts).
+4. **Spawn Order Queue**
+   - Manages and prioritizes creep spawning. See [OrderQueue](src/common/classes/OrderQueue.ts).
 
 ### Main Loop
 
-The main loop is the entry point of the bot's execution. It initializes the core, updates the game state, and runs the managers in sequence.
+The main loop serves as the entry point for the bot's execution. It initializes the core, updates the game state, and invokes the managers to perform their respective tasks.
 
 ```typescript
 // src/arena_tutorial/main.ts
@@ -55,16 +44,21 @@ export function loop() {
 
 ### Execution Flow
 
-1. **Initialize Core**
+1. Initialize Core
 
-   - The `getCore` function retrieves the singleton instance of the [Core](src/arena_tutorial/Core.ts) class.
-   - The `core.run` method updates the game state for the current tick.
+   - Retrieve the singleton instance of the [Core](src/arena_tutorial/Core.ts) class using `getCore`.
+   - Update the game state for the current tick with `core.run`.
 
-2. **Run Managers**
+2. Run Managers
 
-   - **Run Harvest**: Spawns Harvester creeps.
-   - **Run Military**: Spawns Attacker creeps.
-   - **Run Spawn**: Handles spawning of creeps.
+   - Harvest manages harvester creeps. See [Harvest](src/arena_tutorial/managers/Harvest.ts)
+   - Military manages attacker creeps. See [Military](src/arena_tutorial/managers/Military.ts)
+   - Spawn manages creep spawning. See [Spawn](src/arena_tutorial/managers/Spawn.ts)
+
+   Each manager handles specific tasks, such as spawning creeps and executing their roles:
+
+   - Harvest source and transfers energy. See [Harvester](src/arena_tutorial/roles/Harvester.ts)
+   - Attack enemy creeps and structures. See [Attacker](src/arena_tutorial/roles/Attacker.ts)
 
 ### Example Implementations
 
