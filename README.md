@@ -1,8 +1,6 @@
 # Screeps Arena TypeScript Sample Bot
 
-This repository contains a TypeScript bot base for Screeps Arena. It's a starter kit designed to help you quickly jump into the action and build advanced bots.
-
-This bot can beat the final stage of the Tutorial Arena and idle players in each basic arena, providing a solid foundation for your own bot development.
+This repository contains a TypeScript starter kit and bot base for Screeps Arena. It provides an extensible framework for developing bots, including core game state management, role-based creep behavior, and prioritized spawning.
 
 ## Bot Architecture
 
@@ -10,29 +8,29 @@ This bot can beat the final stage of the Tutorial Arena and idle players in each
 
 1. **Core Class Singleton**
 
-   - The [Core](src/arena_tutorial/Core.ts) class is a singleton that manages game state and logic. It provides access to common game objects and maintains state for each arena. This pattern is ideal for Screeps Arena because:
-     - **Centralized Management**: Ensures consistent management of game objects and state across arenas.
-     - **Shared Resources**: Allows access and manipulation of common game objects, reducing redundancy.
-     - **Arena-Specific Logic**: Supports each arena's unique game objects by extending the [Common Core](src/common/Core.ts) class.
-     - **State Persistence**: Maintains game state across ticks.
+   - The [Core](src/arena_tutorial/Core.ts) class is a singleton that manages game state and logic. It provides access to common game objects and maintains state for each arena. This pattern is ideal for Screeps Arena because it:
+     - Centralizes access and manipulation of game objects, reducing redundancy.
+     - Supports Arena-Specific game objects by extending the [Common Core](src/common/Core.ts) class.
+     - Maintains State Persistence across ticks.
 
 2. **Managers**
 
    - Managers are modular controllers responsible for specific game logic. They are invoked in the main loop to perform their respective tasks.
    - Example Managers:
-     - **Harvest Manager**: Handles resource harvesting logic. See [Harvest](src/arena_tutorial/managers/Harvest.ts).
-     - **Military Manager**: Manages military operations. See [Military](src/arena_tutorial/managers/Military.ts).
-     - **Spawn Manager**: Manages the spawning of new creeps. See [Spawn](src/arena_tutorial/managers/Spawn.ts).
+     - **Harvest Manager**: Spawns harvester. See [Harvest](src/arena_tutorial/managers/Harvest.ts).
+     - **Military Manager**: Spawns attacker. See [Military](src/arena_tutorial/managers/Military.ts).
+     - **Spawn Manager**: Manages creep spawning. See [Spawn](src/arena_tutorial/managers/Spawn.ts).
 
-3. **Creep Roles**
+3. **Spawn Order Queue**
+
+   - Manage and prioritize the spawning of creeps. See [OrderQueue](src/common/classes/OrderQueue.ts).
+
+4. **Creep Roles**
 
    - Creeps are assigned roles, each with specialized behaviors and tasks. Roles define the actions a creep can perform.
    - Example Roles:
-     - **Harvester**: Gathers resources and transfers them to structures. See [Harvester](src/arena_tutorial/roles/Harvester.ts).
-     - **Attacker**: Engages in combat with enemy creeps and structures. See [Attacker](src/arena_tutorial/roles/Attacker.ts).
-
-4. **Spawn Order Queue**
-   - Manage and prioritize the spawning of creeps. See [OrderQueue](src/common/classes/OrderQueue.ts).
+     - **Harvester**: Harvests source and transfers energy. See [Harvester](src/arena_tutorial/roles/Harvester.ts).
+     - **Attacker**: Attacks enemy creeps and structures. See [Attacker](src/arena_tutorial/roles/Attacker.ts).
 
 ### Main Loop
 
@@ -99,4 +97,4 @@ To get started with this sample bot, follow these steps:
 
 ## Next Steps
 
-Dive into the bot's architecture, customize it and develop your own strategies, and dominate the Screeps Arena. Happy coding!
+Explore the bot's architecture to understand its core components and design patterns. Customize the existing modules to implement strategies to defeat opponents in different arenas. Utilize the managers and role-based creep systems as a foundation for crafting your roles and mechanics. Continue to iterate and refine your bot to improve your rank in Screeps Arena. Happy coding!
