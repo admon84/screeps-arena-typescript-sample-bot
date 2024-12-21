@@ -21,8 +21,8 @@ export function setCreepStateAndRun<TCore extends Core>(
   core: TCore,
   creep: Creep,
   state: number,
-  runFunction: (creep: Creep, core: TCore, ...args: any[]) => void,
-  ...args: any[]
+  runFunction: (creep: Creep, core: TCore, ...args: unknown[]) => void,
+  ...args: unknown[]
 ) {
   const canRunFunction = !creepHadState(creep, state);
   setCreepState(creep, state);

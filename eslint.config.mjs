@@ -34,7 +34,6 @@ export default [
           accessibility: 'explicit',
         },
       ],
-      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-shadow': [
         'error',
         {
