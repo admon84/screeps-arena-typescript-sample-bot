@@ -1,4 +1,4 @@
-import { RESOURCE_SCORE } from 'arena';
+import { RESOURCE_SCORE } from 'arena/season_beta/collect_and_control/basic/constants';
 import { ERR_NOT_IN_RANGE } from 'game/constants';
 import { Creep } from 'game/prototypes';
 import { Core } from '../Core';

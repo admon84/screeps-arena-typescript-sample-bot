@@ -1,4 +1,4 @@
-import { BodyPart, Flag } from 'arena';
+import { BodyPart, Flag } from 'arena/season_beta/capture_the_flag/basic/prototypes';
 import { Core as CommonCore } from 'common/Core';
 import { StructureTower } from 'game/prototypes';
 import { getObjectsByPrototype } from 'game/utils';

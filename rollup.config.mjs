@@ -39,8 +39,10 @@ const getOptions = arena => {
   return {
     input: `${arena}/main.ts`,
     external: [
-      'arena',
-      'arena/prototypes',
+      'arena/season_beta/capture_the_flag/basic/prototypes',
+      'arena/season_beta/collect_and_control/basic/prototypes',
+      'arena/season_beta/collect_and_control/basic/constants',
+      'arena/season_beta/collect_and_control/advanced/constants',
       'game',
       'game/constants',
       'game/path-finder',

@@ -24,6 +24,8 @@ To get started with this sample bot, follow these steps:
 
 ## Bot Architecture
 
+The bot is organized with a Core class for game state management, high-level task Managers, role-based stateful Creeps, and a priority Spawn queue.
+
 ### Core Components
 
 1. **Core Class Singleton**
@@ -52,4 +54,4 @@ Each arena has its own specific bot implementation. Detailed documentation for e
 
 ## Next Steps
 
-Explore the bot's architecture to understand its core components and design patterns. Customize the existing modules to implement strategies to defeat opponents in different arenas. Utilize the managers and role-based creep systems as a foundation for crafting your roles and mechanics. Continue to iterate and refine your bot to improve your rank in Screeps Arena. Happy coding!
+Explore the bot's architecture and develop new strategies for different arenas. Customize the managers and role-based creeps to fit your gameplay style. Iterate and refine your bot to progress in Screeps Arena. Happy coding!

@@ -18,7 +18,7 @@
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/node": "^22.10.2",
-    "@types/screeps-arena": "screepers/typed-screeps-arena#develop",
+    "@types/screeps-arena": "screepers/typed-screeps-arena#season-beta",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",
     "@typescript-eslint/typescript-estree": "^8.18.1",

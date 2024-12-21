@@ -1,4 +1,4 @@
-import { AreaEffect, ScoreCollector } from 'arena';
+import { AreaEffect, ScoreCollector } from 'arena/season_beta/collect_and_control/basic/prototypes';
 import { Core as CommonCore } from 'common/Core';
 import { RESOURCE_ENERGY } from 'game/constants';
 import {
