@@ -1,7 +1,7 @@
 import { Order } from 'common/classes/Order';
 import { Priority } from 'common/enums/priority';
 import { RoleTUT as Role } from 'common/enums/role';
-import { getMaxLevelWorker, getWorkerBody } from 'common/lib/bodyParts';
+import { getWorkerBody } from 'common/lib/bodyParts';
 import { Core } from '../Core';
 import { getCreepsInQueue, orderCreep } from '../lib/orders';
 import { run as runHarvester } from '../roles/Harvester';

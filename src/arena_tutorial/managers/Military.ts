@@ -1,7 +1,7 @@
 import { Order } from 'common/classes/Order';
 import { Priority } from 'common/enums/priority';
 import { RoleTUT as Role } from 'common/enums/role';
-import { getBlinkyBody, getMaxLevelBlinky } from 'common/lib/bodyParts';
+import { getBlinkyBody } from 'common/lib/bodyParts';
 import { Core } from '../Core';
 import { getCreepsInQueue, orderCreep } from '../lib/orders';
 import { run as runAttacker } from '../roles/Attacker';

@@ -1,4 +1,4 @@
-import { BodyPartConstant, ERR_NOT_IN_RANGE, OK } from 'game/constants';
+import { BodyPartConstant } from 'game/constants';
 import { Creep } from 'game/prototypes';
 import { Core } from '../Core';
 
