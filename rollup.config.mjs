@@ -25,13 +25,13 @@ const arenas = fg.sync(`src/arena_*${targetArena}*`, {
   onlyDirectories: true,
 });
 if (arenas.length === 0) {
-  throw new Error(`No arenas found in src matching ${targetArena}'`);
+  throw new Error(`No arenas found in src matching '${targetArena}'`);
 } else {
   const tag = arenas.length > 1 ? 's' : '';
   if (targetArena === '') {
     console.log(`Building all ${arenas.length} arena${tag}.`);
   } else {
-    console.log(`Building ${arenas.length} arena${tag} for target "${targetArena}"`);
+    console.log(`Building ${arenas.length} arena${tag} for target '${targetArena}'`);
   }
 }
 
