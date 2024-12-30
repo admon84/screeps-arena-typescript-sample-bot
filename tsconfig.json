@@ -2,9 +2,9 @@
   "compilerOptions": {
     "module": "esnext",
     "lib": [
-      "esnext"
+      "es2020"
     ],
-    "target": "es2022",
+    "target": "es2020",
     "moduleResolution": "node",
     "outDir": "./dist/",
     "baseUrl": "./src/",

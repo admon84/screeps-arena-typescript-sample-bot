@@ -7,8 +7,8 @@ let assignedRoles = false;
 
 export function runSample(core: Core) {
   // This is sample code, replace with actual code
-  core.runCreeps(Role.Sample, runSampleRole);
   assignCreepRole(core);
+  core.runCreeps(Role.Sample, runSampleRole);
 }
 
 function assignCreepRole(core: Core) {

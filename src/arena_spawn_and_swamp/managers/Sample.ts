@@ -9,9 +9,9 @@ let sampleCreep: Creep | undefined;
 
 export function runSample(core: Core) {
   // This is sample code, replace with actual code
-  core.runCreeps(Role.Sample, runSampleRole);
   spawnCreep(core);
   assignCreepRole(core);
+  core.runCreeps(Role.Sample, runSampleRole);
 }
 
 function spawnCreep(core: Core) {
